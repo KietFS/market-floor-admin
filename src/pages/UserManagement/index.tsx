@@ -47,7 +47,9 @@ const UserManagement = () => {
     React.useState<GridSelectionModel>([]);
   const [users, setUsers] = React.useState<IUser[]>([]);
 
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [loading, setLoading] = React.useState<boolean>(false);
   const [page, setPage] = React.useState<number>(1);
   const [totalPage, setTotalPage] = React.useState<number>(0);
@@ -93,7 +95,7 @@ const UserManagement = () => {
               payload,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
@@ -118,7 +120,7 @@ const UserManagement = () => {
               payload,
               {
                 headers: {
-                  Authorization: `Bearer ${user?.token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             );
@@ -160,7 +162,7 @@ const UserManagement = () => {
         `${apiURL}/profiles?page=${page - 1}&size=${ROW_PER_PAGE}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -181,7 +183,7 @@ const UserManagement = () => {
         `${apiURL}/profiles?page=${page - 1}&size=${ROW_PER_PAGE}`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

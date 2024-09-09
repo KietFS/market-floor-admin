@@ -30,7 +30,9 @@ const PaymentManagement = () => {
   const [deleteDisable, setDeleteDisable] = React.useState<boolean>(false);
   const [selectionModel, setSelectionModel] =
     React.useState<GridSelectionModel>([]);
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [products, setProducts] = React.useState<IItemProps[]>([]);
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [page, setPage] = React.useState<number>(1);
@@ -43,7 +45,7 @@ const PaymentManagement = () => {
         `${apiURL}/bids/revenue?&page=${page - 1}&size=10`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -74,7 +76,7 @@ const PaymentManagement = () => {
         `${apiURL}/bids/revenue?&page=${page - 1}&size=10`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );

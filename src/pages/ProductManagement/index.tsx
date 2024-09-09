@@ -29,7 +29,9 @@ const ProductManagement = () => {
   const [deleteDisable, setDeleteDisable] = React.useState<boolean>(false);
   const [selectionModel, setSelectionModel] =
     React.useState<GridSelectionModel>([]);
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [products, setProducts] = React.useState<IProductHomePageResponse[]>(
     []
   );
@@ -39,8 +41,6 @@ const ProductManagement = () => {
   const [actionLoading, setActionLoading] = React.useState<boolean>(false);
   const [selectedRow, setSelectedRow] = React.useState<string | number>("");
 
-  console.log("proeuct is", products);
-
   const getAllProducts = async () => {
     try {
       setLoading(true);
@@ -48,7 +48,7 @@ const ProductManagement = () => {
         `${apiURL}/products?&page=${page - 1}&size=10&sort=bidCreatedDate,desc`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -71,7 +71,7 @@ const ProductManagement = () => {
         `${apiURL}/products?&page=${page - 1}&size=10&sort=bidCreatedDate,desc`,
         {
           headers: {
-            Authorization: `Bearer ${user?.token}`,
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
@@ -157,7 +157,7 @@ const ProductManagement = () => {
             //THIS NEED TO FIX
             const response = await axios.delete(`${apiURL}/products/${id}/`, {
               headers: {
-                Authorization: `Bearer ${user?.token}`,
+                Authorization: `Bearer ${accessToken}`,
               },
             });
 
