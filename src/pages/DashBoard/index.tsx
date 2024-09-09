@@ -41,7 +41,9 @@ interface IStatistic {
 
 export default function DashBoard() {
   const { rerender } = useRerender();
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const [statisticData, setStatisticData] = useState<IStatistic | null>(null);
   const [listCategory, setListCategory] = useState<any[]>([]);
   const { openSideBar: open } = useAppSelector(
@@ -172,11 +174,11 @@ export default function DashBoard() {
   }, [dimension]);
 
   const getStatisticData = async () => {
-    console.log("bearer token is", `Bearer ${user?.token}`);
+    console.log("bearer token is", `Bearer ${accessToken}`);
     try {
       const res = await axios.get(`${apiURL}/statistics`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (res.data.success) {
@@ -283,7 +285,7 @@ export default function DashBoard() {
                           />
                         </div>
                         <p className="text-md font-bold text-green-600 text-right">
-                          {(983)?.toString().prettyMoney()}
+                          {983?.toString().prettyMoney()}
                         </p>
                       </div>
                     </div>
@@ -299,7 +301,7 @@ export default function DashBoard() {
                           />
                         </div>
                         <p className="text-md font-bold text-green-600 text-right">
-                          {(91)?.toString().prettyMoney()}
+                          {91?.toString().prettyMoney()}
                         </p>
                       </div>
                     </div>
@@ -315,7 +317,7 @@ export default function DashBoard() {
                           />
                         </div>
                         <p className="text-md font-bold text-green-600 text-right">
-                          {(889)?.toString().prettyMoney()}
+                          {889?.toString().prettyMoney()}
                         </p>
                       </div>
                     </div>
@@ -331,7 +333,7 @@ export default function DashBoard() {
                           />
                         </div>
                         <p className="text-md font-bold text-green-600 text-right">
-                          {(94)?.toString().prettyMoney()}
+                          {94?.toString().prettyMoney()}
                         </p>
                       </div>
                     </div>

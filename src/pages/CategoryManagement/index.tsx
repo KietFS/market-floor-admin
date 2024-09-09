@@ -36,7 +36,9 @@ const CategoryMangement = () => {
     React.useState<boolean>(false);
 
   //hooks
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { user, accessToken } = useAppSelector(
+    (state: IRootState) => state.auth
+  );
   const history = useHistory();
 
   const handleNavigate = (id: string | number) => {
@@ -48,18 +50,16 @@ const CategoryMangement = () => {
     // history.push(`/category/${categoryId}`);
   };
 
-  console.log("categories", categories);
-
   const getAllCategories = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${apiURL}/categories`, {
+      const response = await axios.get(`http://localhost:4000/category`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (response?.data.success) {
-        setCategories(response?.data?.data);
+        setCategories(response?.data?.data?.data);
       }
     } catch (error) {
       console.log("GET PRODUCT CATEGORY ERROR", error);
@@ -71,9 +71,9 @@ const CategoryMangement = () => {
   const refreshCategory = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${apiURL}/categories`, {
+      const response = await axios.get(`http://localhost:4000/category`, {
         headers: {
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       });
       if (response?.data?.success) {
@@ -154,7 +154,7 @@ const CategoryMangement = () => {
       ),
     },
     {
-      field: "dataType",
+      field: "properties",
       headerName: "Các trường",
       renderCell: (params: GridRenderCellParams<string>) => {
         return (
@@ -185,7 +185,7 @@ const CategoryMangement = () => {
             //THIS NEED TO FIX
             const response = await axios.delete(`${apiURL}/categories/${id}/`, {
               headers: {
-                Authorization: `Bearer ${user?.token}`,
+                Authorization: `Bearer ${accessToken}`,
               },
             });
 

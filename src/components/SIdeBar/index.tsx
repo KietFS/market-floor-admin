@@ -157,7 +157,7 @@ export default function MainLayout(props: ISideBarProps) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#4b5563" }}>
         <Toolbar>
           <IconButton
             color="inherit"

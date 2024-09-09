@@ -1,16 +1,11 @@
 import * as React from "react";
-import { Theme, useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppSelector } from "../../hooks/useRedux";
 import { IRootState } from "../../redux";
 import {
-  BanknotesIcon,
   ChevronRightIcon,
-  ClipboardDocumentCheckIcon,
-  ClipboardDocumentIcon,
   ClipboardDocumentListIcon,
   ClockIcon,
   MapPinIcon,

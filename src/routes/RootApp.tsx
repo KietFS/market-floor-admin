@@ -9,9 +9,10 @@ import { IRootState } from "../redux";
 import BidManagement from "../pages/BidManagement";
 import CategoryMangement from "../pages/CategoryManagement";
 import PaymentManagement from "../pages/RevenueMangement";
+import { useAuth } from "../hooks/useAuth";
 
 export default function RootApp() {
-  const { user } = useAppSelector((state: IRootState) => state.auth);
+  const { accessToken } = useAppSelector((state: IRootState) => state.auth);
   const isExited = localStorage.getItem("admin");
 
   return (
@@ -19,7 +20,7 @@ export default function RootApp() {
       <Route
         path="/"
         render={() => {
-          return user === null && !isExited ? (
+          return !accessToken ? (
             <Redirect to="/login" />
           ) : (
             <Redirect to="/home" />

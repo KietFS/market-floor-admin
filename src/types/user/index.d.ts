@@ -1,10 +1,10 @@
-type IRole = "ROLE_USER";
+type IRole = "admin" | "staff";
 
 export interface IUser {
   id: string;
   username: string;
   email: string;
-  roles: IRole[];
+  role: IRole;
   token: string;
 }
 

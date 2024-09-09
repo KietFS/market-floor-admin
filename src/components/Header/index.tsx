@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../hooks/useAuth";
 import { useAppSelector } from "../../hooks/useRedux";
 import { IRootState } from "../../redux";
-import { setUser } from "../../redux/slices/auth";
+import { setAccessToken, setUser } from "../../redux/slices/auth";
 import LogoutConfirmDialog from "../LogoutConfirmDialog";
 
 interface IHeaderProps {
@@ -19,6 +19,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
     try {
       localStorage.removeItem("admin");
       localStorage.removeItem("token");
+      dispatch(setAccessToken(""));
       dispatch(setUser(null));
       toast.success("Đăng xuất thành công", {
         position: "top-right",

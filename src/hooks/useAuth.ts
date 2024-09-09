@@ -1,52 +1,46 @@
 import { useEffect, useState } from "react";
-import {
-  useSignInWithGoogle,
-  useSignInWithFacebook,
-} from "react-firebase-hooks/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { auth } from "../common/config/firebase";
 import { IRootState } from "../redux";
-import { setAuth, setUser } from "../redux/slices/auth";
-import { isExistedEmail, loginService, registerService } from "../services/api";
-import { IUser } from "../types/user";
-import { useAppDispatch, useAppSelector } from "./useRedux";
+import { setAccessToken, setUser } from "../redux/slices/auth";
+import { useAppSelector } from "./useRedux";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export const useAuth = () => {
-  const [loginWithGoogle, googleUser] = useSignInWithGoogle(auth);
-  const [loginWithFacebook] = useSignInWithFacebook(auth);
+  const [loginWithGoogle] = useSignInWithGoogle(auth);
 
   //login
   const [loginError, setLoginError] = useState<string>();
   const [loginLoading, setLoginLoading] = useState<boolean>(false);
-
-  //register
-  const [registerError, setRegisterError] = useState<any>();
-  const [regsiterLoading, setRegisterLoading] = useState<boolean>(false);
-
-  //checkExisted
-  const [existed, setExisted] = useState<boolean | null>(null);
+  const isAuth = useAppSelector((state: IRootState) => state.auth.accessToken);
 
   const { user } = useAppSelector((state: IRootState) => state.auth);
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const login = async (email: string, password: string) => {
+  const login = async (phoneNumber: string, password: string) => {
     try {
       setLoginLoading(true);
-      const data = await loginService(email, password);
-      if (data) {
-        toast.success("Đăng nhập thành công", {
+      const response = await axios.post("http://localhost:4000/auth/signin", {
+        phoneNumber,
+        password,
+      });
+      if (response?.data?.success) {
+        toast.success("Login successfully", {
           position: "top-right",
           autoClose: 0,
           theme: "colored",
           hideProgressBar: true,
         });
-        console.log("LOGIN RESPONSE", data.data);
-        dispatch(setUser(data?.data?.data as IUser));
-        dispatch(setAuth(true));
+        history.push("/home");
+        dispatch(setUser(response?.data?.data as any));
+        dispatch(setAccessToken(response?.data?.data?.accessToken));
       } else {
-        toast.error("Tên đăng nhập hoặc mật khẩu không đúng", {
+        toast.error("Phone number or password in incorrect", {
           position: "top-right",
           theme: "colored",
           hideProgressBar: true,
@@ -60,53 +54,9 @@ export const useAuth = () => {
     }
   };
 
-  const register = async (
-    email: string,
-    password: string,
-    username: string
-  ) => {
-    try {
-      setRegisterLoading(true);
-      const data = await registerService(email, password, username);
-      if (data) {
-        // router.push("/auth/login");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setRegisterLoading(false);
-    }
-  };
-
   useEffect(() => {
     user && localStorage.setItem("admin", JSON.stringify(user));
   }, [user]);
-
-  useEffect(() => {
-    googleUser && checkIsFirstTimeWithGoogle(googleUser?.user?.email as string);
-  }, [googleUser]);
-
-  useEffect(() => {
-    if (googleUser) {
-      if (existed === true) {
-        login(
-          googleUser?.user?.email as string,
-          googleUser?.user?.uid as string
-        );
-      } else {
-        registerService(
-          googleUser.user.displayName as string,
-          googleUser.user.email as string,
-          googleUser.user.uid
-        );
-      }
-    }
-  }, [googleUser, existed]);
-
-  const checkIsFirstTimeWithGoogle = async (email: string) => {
-    const isExisted = await isExistedEmail(email);
-    isExisted ? setExisted(true) : setExisted(false);
-  };
 
   const googleLogin = async () => {
     try {
@@ -118,16 +68,10 @@ export const useAuth = () => {
   };
 
   return {
+    isAuth: !!isAuth,
     login,
     loginError,
     googleLogin,
-
     loginLoading,
-    loginWithFacebook,
-    loginWithGoogle,
-
-    register,
-    registerError,
-    regsiterLoading,
   };
 };

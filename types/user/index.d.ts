@@ -5,7 +5,7 @@ export interface IUser {
   username: string;
   email: string;
   roles: IRole[];
-  token: string;
+  accessToken: string;
 }
 
 export interface IAddress {

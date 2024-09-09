@@ -19,12 +19,12 @@ import { CircularProgress } from "@mui/material";
 interface ILoginPageProps {}
 
 interface IFormValue {
-  email: string;
+  phoneNumber: string;
   password: string;
 }
 
 const validationSchema = yup.object().shape<{ [k in keyof IFormValue]: any }>({
-  email: yup.string().required("Vui lòng nhập email của bạn"),
+  phoneNumber: yup.string().required("Vui lòng nhập email của bạn"),
   password: yup
     .string()
     .min(6, "Mật khẩu phải lớn hơn 6 kí tự")
@@ -34,12 +34,12 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
   const { googleLogin, login, loginLoading, loginError } = useAuth();
   const { user } = useAppSelector((state: IRootState) => state.auth);
   const [initialValues, setInitialValues] = useState<IFormValue>({
-    email: "",
+    phoneNumber: "",
     password: "",
   });
 
   const handleSubmit = (values: IFormValue) => {
-    login(values.email, values.password);
+    login(values.phoneNumber, values.password);
   };
 
   return (
@@ -78,14 +78,14 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
                     </div>
                     <div className="space-y-5">
                       {loginError && (
-                        <p className="text-gray-500">Đã có lỗi xảy ra</p>
+                        <p className="text-gray-500">Something wrong happens</p>
                       )}
                       <BaseInput
-                        mode="email"
-                        name="email"
-                        label="Email"
+                        mode="phoneNumber"
+                        name="phoneNumber"
+                        label="Phone number"
                         required
-                        type="email"
+                        type="phoneNumber"
                         className="w-[250px] phone:w-[300px] tablet:w-[400px]"
                       />
                       <BaseInput
