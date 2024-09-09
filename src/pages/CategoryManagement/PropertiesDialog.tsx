@@ -130,7 +130,7 @@ const PropertiesDialog: React.FC<IPropertiesDialogProps> = ({
                     defaultValue={category?.name}
                     value={nameValue}
                     onChange={(e) => setNameValue(e.target.value)}
-                    className="w-full rounded-lg px-4 py-1 h-[40px] text-gray-600 font-semibold bg-gray-100 focus:border-blue-500 focus-within:border-blue-500 border-1"
+                    className="w-full rounded-lg px-4 py-1 h-[40px] text-gray-600 font-semibold bg-gray-100 focus:border-gray-500 focus-within:border-gray-500 border-1"
                   />
                 </div>
 

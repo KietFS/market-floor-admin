@@ -96,7 +96,7 @@ export default function MultipleSelectPlaceholder() {
           input={<OutlinedInput />}
           renderValue={() => (
             <div className="flex justify-between items-center py-4">
-              <p className="w-8 h-8 p-2 rounded-full  border-1 border-gray-300 bg-blue-500 text-white font-semibold items-center justify-center flex text-lg mr-2">
+              <p className="w-8 h-8 p-2 rounded-full  border-1 border-gray-300 bg-gray-500 text-white font-semibold items-center justify-center flex text-lg mr-2">
                 K
               </p>
               <p className="text-gray-600 font-semibold">

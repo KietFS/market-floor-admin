@@ -239,7 +239,7 @@ const CategoryMangement = () => {
                   <div></div>
                   <button
                     onClick={() => setOpenCreateDialog(true)}
-                    className="bg-blue-500 text-white  w-fit h-[40px] px-3 py-1 font-bold rounded-lg flex items-center hover:opacity-80"
+                    className="bg-gray-500 text-white  w-fit h-[40px] px-3 py-1 font-bold rounded-lg flex items-center hover:opacity-80"
                   >
                     <PlusIcon className="w-[20px] h-[20px] text-white font-bold" />
                     <p>Thêm danh mục</p>

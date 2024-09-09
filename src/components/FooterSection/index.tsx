@@ -7,8 +7,8 @@ const FooterSection: React.FC<IFooterSectionProps> = (props) => {
     <div className="py-10 px-8 laptop:px-28 bg-gray-50 h-fit mt-40 laptop:mt-20">
       <div className="space-y-5">
         <div>
-          <h2 className="text-blue-500 font-bold text-3xl text-left">
-            Sneakery Aution
+          <h2 className="text-gray-500 font-bold text-3xl text-left">
+            Market Floor Adin
           </h2>
           <p className="text-lg text-gray-500 font-normal text-left">
             2022 - Designed and Developed by HKMN Group - All rights reserve

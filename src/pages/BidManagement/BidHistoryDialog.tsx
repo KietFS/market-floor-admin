@@ -92,7 +92,7 @@ const ProductBidHistoryDialog: React.FC<IProductBidHistoryDialogProps> = ({
                       <p className="text-lg text-gray-500 font-bold">
                         {item.userName}
                       </p>
-                      <p className="text-blue-500 font-bold text-sm cursor-pointer mr-1 ">
+                      <p className="text-gray-500 font-bold text-sm cursor-pointer mr-1 ">
                         {item.bidAmount.toString().prettyMoney()}$
                       </p>
                       <p className="text-gray-600 text-sm cursor-pointer">

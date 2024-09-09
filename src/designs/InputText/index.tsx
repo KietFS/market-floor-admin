@@ -55,7 +55,7 @@ const InputText: React.FC<IInputTextProps> = (props) => {
   return (
     <div
       className={`w-full rounded-sm ${
-        isError ? "text-blue-500" : "text-neutral-300"
+        isError ? "text-gray-500" : "text-neutral-300"
       }`}
     >
       <div className="flex items-center justify-between">
@@ -65,7 +65,7 @@ const InputText: React.FC<IInputTextProps> = (props) => {
         </div>
         {hasEvent && (
           <div
-            className="duration-300 cursor-default text-base hover:text-gray-500 text-blue-500"
+            className="duration-300 cursor-default text-base hover:text-gray-500 text-gray-500"
             onClick={() => {
               onClickEvent && onClickEvent();
             }}
@@ -75,14 +75,14 @@ const InputText: React.FC<IInputTextProps> = (props) => {
         )}
       </div>
       <div
-        className={`flex items-center bg-gray-100  py-1 rounded-lg h-10 focus-within:bg-blue-50 w-full`}
+        className={`flex items-center bg-gray-100  py-1 rounded-lg h-10 focus-within:bg-gray-50 w-full`}
       >
         <input
           placeholder="abcdefg@gmail.com"
           {...(rest as any)}
           {...field}
           onChange={(e) => onValueChange(e.target.value)}
-          className={`px-2 py-1  bg-gray-100 text-gray-700 rounded-lg w-full h-10 text-sm focus:bg-blue-50 outline-none ring-0 outline-white border-transparent focus:border-transparent focus:ring-0 focus:outline-transparent`}
+          className={`px-2 py-1  bg-gray-100 text-gray-700 rounded-lg w-full h-10 text-sm focus:bg-gray-50 outline-none ring-0 outline-white border-transparent focus:border-transparent focus:ring-0 focus:outline-transparent`}
         />
       </div>
       {isError && (

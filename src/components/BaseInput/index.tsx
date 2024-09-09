@@ -107,17 +107,17 @@ const BaseInput: React.FC<IBaseInputProps> = (props) => {
   return (
     <div
       className={`w-full rounded-sm ${
-        isError ? "text-blue-500" : "text-neutral-300"
+        isError ? "text-gray-500" : "text-neutral-300"
       }  `}
     >
       <div className="flex items-center justify-between">
         <div className="flex">
           <p className="text-md font-bold text-gray-700 mr-1">{label}</p>
-          {isRequired && <p className="text-blue-500 font-bold">*</p>}
+          {isRequired && <p className="text-gray-500 font-bold">*</p>}
         </div>
         {hasEvent && (
           <div
-            className="duration-300 cursor-default text-base hover:text-gray-500 text-blue-500"
+            className="duration-300 cursor-default text-base hover:text-gray-500 text-gray-500"
             onClick={() => {
               onClickEvent && onClickEvent();
             }}
@@ -129,16 +129,16 @@ const BaseInput: React.FC<IBaseInputProps> = (props) => {
       <div
         className={`flex  border w-80 ${
           focus && !isError
-            ? "border-2 border-blue-500"
+            ? "border-2 border-gray-500"
             : isError
-              ? "border-2 border-red-500"
-              : "border-gray-200"
+            ? "border-2 border-red-500"
+            : "border-gray-200"
         } items-center ${
           focus && !isError
-            ? "bg-blue-50"
+            ? "bg-gray-50"
             : isError
-              ? "bg-red-50"
-              : "bg-gray-100"
+            ? "bg-red-50"
+            : "bg-gray-100"
         } px-2 py-1 rounded-lg h-10  ${className}`}
       >
         <div className="border-r border-gray-500 pr-2">
@@ -157,10 +157,10 @@ const BaseInput: React.FC<IBaseInputProps> = (props) => {
           onChange={(e) => onValueChange(e.target.value)}
           className={`px-2 py-1  ${
             focus && !isError
-              ? "bg-blue-50"
+              ? "bg-gray-50"
               : isError
-                ? "bg-red-50"
-                : "bg-gray-100"
+              ? "bg-red-50"
+              : "bg-gray-100"
           } text-gray-700 rounded-lg w-80 h-8 text-sm  outline-none ring-0 border-transparent focus:border-transparent focus:ring-0 focus:outline-transparent`}
         />
       </div>

@@ -42,10 +42,6 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
     login(values.email, values.password);
   };
 
-  // useEffect(() => {
-  //   user && router.push("/");
-  // }, [user]);
-
   return (
     <>
       <head>
@@ -73,16 +69,16 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
                 return (
                   <div className="space-y-7">
                     <div className="space-x-1">
-                      <h1 className="text-center text-blue-600 text-4xl font-bold">
-                        Sneakery
+                      <h1 className="text-center text-gray-600 text-4xl font-bold">
+                        Market Floor
                       </h1>
                       <p className="text-sm text-center text-gray-600 mt-2">
-                        Trang dành cho quản trị viên sàn đấu giá Sneakery
+                        Trang dành cho quản trị viên và nhân viên cửa hàng
                       </p>
                     </div>
                     <div className="space-y-5">
                       {loginError && (
-                        <p className="text-blue-500">Đã có lỗi xảy ra</p>
+                        <p className="text-gray-500">Đã có lỗi xảy ra</p>
                       )}
                       <BaseInput
                         mode="email"
@@ -102,7 +98,7 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
 
                       <div className="flex justify-between mb-[80px] mt-[-10px]">
                         <div></div>
-                        <button className="text-blue-600 text-sm font-semibold">
+                        <button className="text-gray-600 text-sm font-semibold">
                           Quên mật khẩu
                         </button>
                       </div>
@@ -110,7 +106,7 @@ const LoginPage: React.FC<ILoginPageProps> = () => {
                     <button
                       type="submit"
                       onClick={submitForm}
-                      className="bg-blue-500 font-bold text-white  rounded-lg w-[250px] phone:w-[300px] laptop:w-[400px] h-[50px]"
+                      className="bg-gray-500 font-bold text-white  rounded-lg w-[250px] phone:w-[300px] laptop:w-[400px] h-[50px]"
                     >
                       {loginLoading ? (
                         <CircularProgress color="inherit" size={25} />

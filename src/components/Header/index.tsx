@@ -37,7 +37,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           Xin chào {user?.username} !
         </p>
         <button
-          className="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-full hover:opacity-50"
+          className="bg-gray-100 text-gray-800 font-bold px-3 py-1 rounded-full hover:opacity-50"
           onClick={() => setOpen(true)}
         >
           Đăng xuất

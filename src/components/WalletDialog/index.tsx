@@ -112,7 +112,7 @@ const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
             </Tooltip>
           </div>
           <div className="flex flex-col items-center justify-center">
-            <div className="w-20 h-20 bg-blue-500 rounded-full text-white text-[60px] text-center items-center flex justify-center font-semibold">
+            <div className="w-20 h-20 bg-gray-500 rounded-full text-white text-[60px] text-center items-center flex justify-center font-semibold">
               {user?.username?.[0].toUpperCase()}
             </div>
             <p className="text-gray-600 font-semibold text-xl mt-2">
@@ -130,7 +130,7 @@ const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
                     <p className="text-gray-500 text-sm font-semibold">
                       Số dư ví Paypal:
                     </p>
-                    <p className="text-sm font-semibold px-2 py-1 bg-blue-50 text-blue-900 rounded-full">
+                    <p className="text-sm font-semibold px-2 py-1 bg-gray-50 text-gray-900 rounded-full">
                       {money}$
                     </p>
                   </div>
@@ -141,11 +141,11 @@ const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
                       thousandSeparator=","
                       onChange={(e) => setChargeAmount(e.target.value)}
                       type="text"
-                      className={`bg-gray-100 text-gray-700  w-[200px] my-2 h-8 px-2 text-sm ml-1 outline-none ring-0 outline-transparent border-transparent focus:border-transparent focus:ring-0 focus:outline-transparent focus:bg-blue-50 rounded-lg`}
+                      className={`bg-gray-100 text-gray-700  w-[200px] my-2 h-8 px-2 text-sm ml-1 outline-none ring-0 outline-transparent border-transparent focus:border-transparent focus:ring-0 focus:outline-transparent focus:bg-gray-50 rounded-lg`}
                     />
                   )}
                   <p
-                    className="text-sm font-semibold px-4 py-1 bg-blue-500 text-white rounded-full mt-2 cursor-pointer hover:opacity-80"
+                    className="text-sm font-semibold px-4 py-1 bg-gray-500 text-white rounded-full mt-2 cursor-pointer hover:opacity-80"
                     onClick={() => {
                       if (actionCharge === false) {
                         setActionCharge(true);
@@ -166,7 +166,7 @@ const WalletDialog: React.FC<IWalletDialogProps> = (props) => {
                         thống của chúng tôi
                       </p>
                       <p
-                        className="text-sm font-semibold px-4 py-1 bg-blue-50 text-blue-900 rounded-full mt-4 cursor-pointer hover:opacity-80"
+                        className="text-sm font-semibold px-4 py-1 bg-gray-50 text-gray-900 rounded-full mt-4 cursor-pointer hover:opacity-80"
                         onClick={() => createWallet()}
                       >
                         Tạo ngay bằng email của bạn

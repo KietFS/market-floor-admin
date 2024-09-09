@@ -119,7 +119,7 @@ const InputSearch: React.FC<IInputSearchProps> = (props) => {
                 })}
                 {searchTerm !== "" && loading === false && (
                   <button
-                    className="mx-auto mt-2 rounded-full text-blue-900 bg-blue-200 text-xs px-4 py-2 hover:opacity-80"
+                    className="mx-auto mt-2 rounded-full text-gray-900 bg-gray-200 text-xs px-4 py-2 hover:opacity-80"
                     onClick={() => {
                       if (searchTerm !== "") {
                         dispatch(setKeyWord(searchTerm));

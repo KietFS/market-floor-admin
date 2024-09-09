@@ -138,12 +138,12 @@ export default function MainLayout(props: ISideBarProps) {
   ];
 
   const activeIcons = [
-    <ChartBarSquareIcon className="h-6 w-6 text-blue-500 font-semibold" />,
-    <UserCircleIcon className="h-6 w-6 text-blue-500 font-semibold" />,
-    <TagIcon className="h-6 w-6 text-blue-500 font-semibold" />,
-    <InboxStackIcon className="h-6 w-6 text-blue-500 font-semibold" />,
+    <ChartBarSquareIcon className="h-6 w-6 text-gray-500 font-semibold" />,
+    <UserCircleIcon className="h-6 w-6 text-gray-500 font-semibold" />,
+    <TagIcon className="h-6 w-6 text-gray-500 font-semibold" />,
+    <InboxStackIcon className="h-6 w-6 text-gray-500 font-semibold" />,
     // <GiftIcon className="h-6 w-6 text-gray-500" />,
-    <CurrencyDollarIcon className="h-6 w-6 text-blue-500 font-semibold" />,
+    <CurrencyDollarIcon className="h-6 w-6 text-gray-500 font-semibold" />,
   ];
 
   const to = [
@@ -191,8 +191,8 @@ export default function MainLayout(props: ISideBarProps) {
           sx={{ pl: 4 }}
           style={{ display: "flex", justifyContent: "space-between" }}
         >
-          <p className="text-2xl font-bold text-blue-500 w-1/3 laptop:w-fit text-center cursor-pointer">
-            Sneakery
+          <p className="text-2xl font-bold text-gray-500 w-1/3 laptop:w-fit text-center cursor-pointer">
+            Market Floor
           </p>
         </DrawerHeader>
         <Divider />
@@ -226,7 +226,11 @@ export default function MainLayout(props: ISideBarProps) {
                     {path == to[index] ? activeIcons[index] : icons[index]}
                   </ListItemIcon>
                   <p
-                    className={`text-sm  ${path == to[index] ? "text-blue-500 font-semibold" : "text-gray-500"}`}
+                    className={`text-sm  ${
+                      path == to[index]
+                        ? "text-gray-500 font-semibold"
+                        : "text-gray-500"
+                    }`}
                   >
                     {text}
                   </p>

@@ -60,7 +60,7 @@ const MultipleCheckBox: React.FC<IMultipleCheckBoxProps> = (props) => {
             >
               <p className="text-gray-600 text-sm">{option[keyLabel]}</p>
               {listOptionSelected.has(option) ? (
-                <div className="w-4 h-4 rounded-sm border border-blue-500 bg-blue-500 justify-center items-center flex">
+                <div className="w-4 h-4 rounded-sm border border-gray-500 bg-gray-500 justify-center items-center flex">
                   <CheckIcon className="w-3 h-3 mx-auto text-white font-bold" />
                 </div>
               ) : (

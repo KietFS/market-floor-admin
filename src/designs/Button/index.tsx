@@ -25,12 +25,12 @@ const Button: React.FC<IButtonProps> = (props) => {
   return (
     <button
       className={`items-center rounded-lg px-4 py-2 text-center w-fit flex hover:opacity-50 ${className} ${
-        variant === "primary" && "bg-blue-500"
+        variant === "primary" && "bg-gray-500"
       } ${variant === "secondary" && "bg-white"}
       ${variant === "red" && "bg-red-500"} ${
-        variant === "secondary" ? "text-blue-500" : "text-white"
+        variant === "secondary" ? "text-gray-500" : "text-white"
       } border ${
-        variant === "secondary" ? "border-blue-500" : "border-transparent"
+        variant === "secondary" ? "border-gray-500" : "border-transparent"
       } font-semibold text-lg`}
       onClick={() => onClick?.()}
       type={type}

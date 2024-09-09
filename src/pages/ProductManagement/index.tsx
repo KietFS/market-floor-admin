@@ -128,7 +128,7 @@ const ProductManagement = () => {
         return (
           <div className="w-[120px]">
             {!!params?.value ? (
-              <p className="text-blue-500 text-sm font-semibold underline">
+              <p className="text-gray-500 text-sm font-semibold underline">
                 {params?.value}
               </p>
             ) : (

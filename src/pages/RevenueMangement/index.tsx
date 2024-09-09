@@ -183,7 +183,7 @@ const PaymentManagement = () => {
         return (
           <div>
             <div className="w-[120px]">
-              <p className="text-blue-500 text-sm font-regualr">
+              <p className="text-gray-500 text-sm font-regualr">
                 {params.value?.toString()?.prettyDate() || "Không có thông tin"}
               </p>
             </div>

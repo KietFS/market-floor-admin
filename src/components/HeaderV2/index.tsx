@@ -25,8 +25,8 @@ const HeaderV2: React.FC<IHeaderV2Props> = (props) => {
             <Bars3Icon className="text-gray-500 font-bold w-5 h-5" />
           </div>
         </div>
-        <p className="text-3xl font-bold text-blue-500 w-1/3 laptop:w-fit text-center cursor-pointer">
-          Sneakery
+        <p className="text-3xl font-bold text-gray-500 w-1/3 laptop:w-fit text-center cursor-pointer">
+          Market Floor
         </p>
         <div className="flex w-1/3 laptop:hidden laptop:w-0 flex-row-reverse">
           {isAuth ? (
