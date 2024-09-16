@@ -84,7 +84,7 @@ const CreateCategoryDialog: React.FC<ICreateCategoryDialogProps> = ({
               <div className="flex flex-col gap-y-5">
                 <div className="flex justify-between items-center">
                   <h1 className="text-gray-600 font-bold text-2xl mb-2">
-                    Quản lý danh mục
+                    Thêm danh mục
                   </h1>
                   <Tooltip onClick={onClose} title="Đóng">
                     <XMarkIcon className="w-8    h-8 p-1 hover:bg-gray-200 rounded-full cursor-pointer" />

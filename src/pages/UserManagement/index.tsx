@@ -102,7 +102,7 @@ const UserManagement = () => {
 
             if (response?.data?.success == true) {
               toast.success("Vô hiệu hóa tài khoản thành công");
-              refreshUser();
+              getAllUser({ addLoadingEffect: true });
             } else {
             }
           } catch (error) {
@@ -127,7 +127,7 @@ const UserManagement = () => {
 
             if (response?.data?.success == true) {
               toast.success("Kích hoạt tài khoản thành công");
-              refreshUser();
+              getAllUser({ addLoadingEffect: false });
             } else {
             }
           } catch (error) {
@@ -141,13 +141,13 @@ const UserManagement = () => {
                 id: "deactivate",
                 title: "Vô hiệu hóa tài khoản",
                 onPress: () => handleDeactivateUser(params.row?.id),
-                onActionSuccess: () => refreshUser(),
+                onActionSuccess: () => getAllUser({ addLoadingEffect: false }),
               }
             : {
                 id: "activate",
                 title: "Kích hoạt tài khoản",
                 onPress: () => handleActivateUser(params.row?.id),
-                onActionSuccess: () => refreshUser(),
+                onActionSuccess: () => getAllUser({ addLoadingEffect: false }),
               },
         ];
         return <ActionMenu options={options} />;
@@ -155,9 +155,10 @@ const UserManagement = () => {
     },
   ];
 
-  const getAllUser = async () => {
+  const getAllUser = async (params?: { addLoadingEffect?: boolean }) => {
+    const { addLoadingEffect } = params || {};
     try {
-      setLoading(true);
+      addLoadingEffect && setLoading(true);
       const response = await axios.get(
         `${apiURL}/profiles?page=${page - 1}&size=${ROW_PER_PAGE}`,
         {
@@ -173,32 +174,12 @@ const UserManagement = () => {
     } catch (error) {
       console.log("GET USER ERROR", error);
     } finally {
-      setLoading(false);
-    }
-  };
-
-  const refreshUser = async () => {
-    try {
-      const response = await axios.get(
-        `${apiURL}/profiles?page=${page - 1}&size=${ROW_PER_PAGE}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      if (response?.data?.success == true) {
-        setUsers(response?.data?.data);
-        setTotalPage(response?.data?._totalPage);
-      }
-    } catch (error) {
-      console.log("GET USER ERROR", error);
-    } finally {
+      addLoadingEffect && setLoading(false);
     }
   };
 
   React.useEffect(() => {
-    getAllUser();
+    getAllUser({ addLoadingEffect: true });
   }, [page]);
 
   return (

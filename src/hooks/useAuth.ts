@@ -25,7 +25,7 @@ export const useAuth = () => {
   const login = async (phoneNumber: string, password: string) => {
     try {
       setLoginLoading(true);
-      const response = await axios.post("http://localhost:4000/auth/signin", {
+      const response = await axios.post("http://localhost:4000/tenant/signin", {
         phoneNumber,
         password,
       });
